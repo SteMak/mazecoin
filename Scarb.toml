@@ -1,0 +1,27 @@
+[package]
+name = "mazecoin"
+version = "0.1.0"
+edition = "2023_11"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[dependencies]
+starknet = "2.8.4"
+openzeppelin = "0.19.0"
+
+[dev-dependencies]
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.32.0" }
+assert_macros = "2.8.4"
+
+[[target.starknet-contract]]
+sierra = true
+
+[scripts]
+test = "snforge test"
+
+# Visit https://foundry-rs.github.io/starknet-foundry/appendix/scarb-toml.html for more information
+
+[tool.snforge]        # Define `snforge` tool section
+exit_first = true     # Stop tests execution immediately upon the first failure
+fuzzer_runs = 1234    # Number of runs of the random fuzzer
+fuzzer_seed = 1111    # Seed for the random fuzzer
